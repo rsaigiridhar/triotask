@@ -1,0 +1,27 @@
+services:
+  flask1-app:
+    networks:
+      - docker-compose
+    #image: triodemoapp:latest
+    build: ./flask-app
+  mysql123:
+    #image: triodb:latest
+    networks:
+      - docker-compose
+    build: ./db
+    environment:
+      - MYSQL_DATABASE=flask-db
+      - MYSQL_ROOT_PASSWORD=root123
+  nginx:
+    #image: flnginx:latest
+    build: ./nginx
+    depends_on:
+      - "flask1-app"
+    ports:
+      - "85:80"
+    networks:
+      - docker-compose
+
+networks:
+  # The presence of these objects is sufficient to define them
+  docker-compose: {}
