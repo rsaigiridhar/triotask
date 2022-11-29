@@ -1,0 +1,28 @@
+hostname
+whoami
+echo $GIT_BRANCH
+echo $BRANCH_NAME
+rm -rf triotask
+git clone git@github.com:rsaigiridhar/triotask.git
+cd triotask
+if [ $GIT_BRANCH != "origin/master" ]
+then
+cd flask-app
+sudo docker build -t saigiridharr/myflaskapp:$BUILD_NUMBER .
+sudo docker build -t saigiridharr/myflaskapp:latest .
+cd ..
+cd db
+sudo docker build -t saigiridharr/flasksql:$BUILD_NUMBER .
+sudo docker build -t saigiridharr/flasksql:latest .
+sudo docker push saigiridharr/myflaskapp:$BUILD_NUMBER
+sudo docker push saigiridharr/myflaskapp:latest
+sudo docker push saigiridharr/flasksql:$BUILD_NUMBER
+sudo docker push saigiridharr/flasksql:latest
+sudo docker rmi saigiridharr/myflaskapp:$BUILD_NUMBER
+sudo docker rmi saigiridharr/myflaskapp:latest
+sudo docker rmi saigiridharr/flasksql:$BUILD_NUMBER
+sudo docker rmi saigiridharr/flasksql:latest
+kubectl apply -f kube-deploy.yaml --namespace dev
+else
+kubectl apply -f kube-deploy.yaml --namespace prod
+fi
