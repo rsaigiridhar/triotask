@@ -89,7 +89,7 @@ spec:
 
 ---
 
-# configMap definition for nginx in trio task
+# configMap definition for nginx
 
 apiVersion: v1
 kind: ConfigMap
