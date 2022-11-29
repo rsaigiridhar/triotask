@@ -77,7 +77,7 @@ spec:
       volumes:
       - name: nginx-config-volumes
         configMap:
-          name: nginx-configmap
+          name: confmap
       containers:
       - name: nginxc
         image: nginx:latest
@@ -89,11 +89,10 @@ spec:
 
 ---
 
-# configmap definition for nginx
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-configmap
+  name: confmap
 data:
   default.conf: |
       server {
