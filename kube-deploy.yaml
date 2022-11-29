@@ -94,7 +94,7 @@ kind: ConfigMap
 metadata:
   name: confmap
 data:
-  default.conf: |   # name of the file that will be mounted
+  default.conf: |
     server {
         listen 80;
         location / {
