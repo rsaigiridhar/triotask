@@ -89,7 +89,7 @@ spec:
 
 ---
 
-# configMap definition for nginx changing for ns
+# configMap definition for nginx
 
 apiVersion: v1
 kind: ConfigMap
