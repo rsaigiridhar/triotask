@@ -90,13 +90,12 @@ spec:
 ---
 
 # configmap definition for nginx
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: nginx-configmap
 data:
-  default.conf: | # in YAML syntax, | indicates a multi-line string
+  default.conf: |
   http {
       server {
           listen 80;
