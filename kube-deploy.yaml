@@ -129,7 +129,7 @@ spec:
 
 ---
 
-# python app service clusterIP
+# sql service clusterIP
 
 apiVersion: v1
 kind: Service
