@@ -4,16 +4,12 @@ echo $GIT_BRANCH
 echo $BRANCH_NAME
 rm -rf triotask
 git clone git@github.com:rsaigiridhar/triotask.git
-cd triotask
 if [ $GIT_BRANCH != "origin/master" ]
 then
-cd flask-app
-sudo docker build -t saigiridharr/myflaskapp:$BUILD_NUMBER .
-sudo docker build -t saigiridharr/myflaskapp:latest .
-cd ..
-cd db
-sudo docker build -t saigiridharr/flasksql:$BUILD_NUMBER .
-sudo docker build -t saigiridharr/flasksql:latest .
+sudo docker build -t saigiridharr/myflaskapp:$BUILD_NUMBER /home/jenkins/triotask/flask-app
+sudo docker build -t saigiridharr/myflaskapp:latest /home/jenkins/triotask/flask-app
+sudo docker build -t saigiridharr/flasksql:$BUILD_NUMBER /home/jenkins/triotask/db
+sudo docker build -t saigiridharr/flasksql:latest /home/jenkins/triotask/db
 sudo docker push saigiridharr/myflaskapp:$BUILD_NUMBER
 sudo docker push saigiridharr/myflaskapp:latest
 sudo docker push saigiridharr/flasksql:$BUILD_NUMBER
