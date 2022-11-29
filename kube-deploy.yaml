@@ -101,3 +101,44 @@ data:
             proxy_pass http://flaskapps:8181;
         }
     }
+
+---
+# sql deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flasksqld
+  labels:
+    app: flasksql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flasksql
+  template:
+    metadata:
+      labels:
+        app: flasksql
+    spec:
+      containers:
+      - name: flasksqlc
+        image: saigiridharr/flasksql
+        ports:
+        -  containerPort: 3306
+
+---
+
+# python app service clusterIP
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql123
+spec:
+  selector:
+    app: flasksql
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
