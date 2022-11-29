@@ -24,7 +24,7 @@ spec:
 
 ---
 
-# python app service clusterIP let's see
+# python app service clusterIP
 
 apiVersion: v1
 kind: Service
