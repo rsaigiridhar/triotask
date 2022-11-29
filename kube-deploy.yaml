@@ -1,0 +1,105 @@
+# python app deployment
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskppd
+  labels:
+    app: flaskappdl
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: flaskappdl
+  template:
+    metadata:
+      labels:
+        app: flaskappdl
+    spec:
+      containers:
+      - name: flaskappc
+        image: saigiridharr/myflaskapp
+        ports:
+        -  containerPort: 5050
+
+---
+
+# python app service clusterIP
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: flaskapps
+spec:
+  selector:
+    app: flaskappdl
+  ports:
+  - protocol: TCP
+    port: 8181
+    targetPort: 5050
+
+---
+
+# nginx service with loadbalancer
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginxs
+spec:
+  selector:
+    app: nginxdl
+  ports:
+  - protocol: TCP
+    port: 80
+  type: LoadBalancer
+
+---
+
+# nginx deployment with configMaps
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginxd
+  labels:
+    app: nginxdl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginxdl
+  template:
+    metadata:
+      labels:
+        app: nginxdl
+    spec:
+      volumes:
+      - name: nginx-config-volumes
+        configMap:
+          name: nginx-configmap
+      containers:
+      - name: nginxc
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-config-volumes
+          mountPath: /etc/nginx/conf.d
+
+---
+
+# configMap definition for nginx
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-configmap
+data:
+  default.conf: | # in YAML syntax, | indicates a multi-line string
+    server {
+      listen 80;
+        location / {
+          proxy_pass http://flaskapps:8181;
+        }
+      }
