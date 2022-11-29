@@ -94,10 +94,10 @@ kind: ConfigMap
 metadata:
   name: confmap
 data:
-  default.conf: |
-      server {
-          listen 80;
-          location / {
-              proxy_pass http://flaskapps:8181;
-          }
-      }
+  default.conf: |   # name of the file that will be mounted
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://flaskapps:8181;
+        }
+    }
