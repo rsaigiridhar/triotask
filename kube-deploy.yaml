@@ -89,7 +89,7 @@ spec:
 
 ---
 
-# configMap definition for nginx
+# configMap definition for nginx NS
 
 apiVersion: v1
 kind: ConfigMap
@@ -97,9 +97,11 @@ metadata:
   name: nginx-configmap
 data:
   default.conf: | # in YAML syntax, | indicates a multi-line string
-    server {
-      listen 80;
-        location / {
-          proxy_pass http://flaskapps:8181;
-        }
+  http {
+      server {
+          listen 80;
+          location / {
+              proxy_pass http://flaskapps:8181;
+          }
       }
+    }
