@@ -96,11 +96,9 @@ metadata:
   name: nginx-configmap
 data:
   default.conf: |
-  http {
       server {
           listen 80;
           location / {
               proxy_pass http://flaskapps:8181;
           }
       }
-    }
