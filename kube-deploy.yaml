@@ -77,7 +77,7 @@ spec:
       volumes:
       - name: nginx-config-volumes
         configMap:
-          name: nginx-configmap
+          name: confmap
       containers:
       - name: nginxc
         image: nginx:latest
@@ -89,19 +89,15 @@ spec:
 
 ---
 
-# configMap definition for nginx NS
-
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-configmap
+  name: confmap
 data:
-  default.conf: | # in YAML syntax, | indicates a multi-line string
-  http {
-      server {
-          listen 80;
-          location / {
-              proxy_pass http://flaskapps:8181;
-          }
-      }
+  default.conf: |   # name of the file that will be mounted
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://flaskapps:8181;
+        }
     }
