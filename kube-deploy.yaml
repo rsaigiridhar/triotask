@@ -129,7 +129,7 @@ spec:
           claimName: persis-vol-claim
       containers:
       - name: flasksqlc
-        image: saigiridharr/flasksql
+        image: saigiridharr/flasksql1
         imagePullPolicy: Always
         ports:
         -  containerPort: 3306
