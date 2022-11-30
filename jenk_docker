@@ -1,0 +1,8 @@
+hostname
+whoami
+ssh -i "~/.ssh/id_rsa" jenkins@34.76.176.20 << EOF
+hostname
+whoami
+git clone git@github.com:rsaigiridhar/triotask.git
+cd triotask
+docker-compose up -d
