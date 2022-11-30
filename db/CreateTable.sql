@@ -11,6 +11,6 @@ CREATE TABLE IF NOT EXISTS users
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'Sai','R','sai@sai.com'),(2,'Chris','M','chris.m@sai.com'),(3,'Piers','B','piers.b@sai.com');
+INSERT INTO `users` VALUES (1,'Sai','R','sai@sai.com'),(2,'Chris','M','chris.m@sai.com'),(3,'Piers','B','piers.b@sai.com');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
