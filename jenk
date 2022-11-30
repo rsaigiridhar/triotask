@@ -4,10 +4,11 @@ echo $GIT_BRANCH
 echo $BRANCH_NAME
 rm -rf triotask
 git clone git@github.com:rsaigiridhar/triotask.git
+cd triotask
+git pull --all
 if [ $GIT_BRANCH != "origin/master" ]
 then
-sudo docker rmi saigiridharr/myflaskapp:latest
-sudo docker rmi saigiridharr/flasksql:latest
+git checkout seccond
 sudo docker build -t saigiridharr/myflaskapp:$BUILD_NUMBER /home/jenkins/triotask/flask-app
 sudo docker build -t saigiridharr/myflaskapp:latest /home/jenkins/triotask/flask-app
 sudo docker build -t saigiridharr/flasksql:$BUILD_NUMBER /home/jenkins/triotask/db
