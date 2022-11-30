@@ -13,3 +13,18 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/home/sai_ramasamy/pv"
+
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: persis-vol-caim
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
