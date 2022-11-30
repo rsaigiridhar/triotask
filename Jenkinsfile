@@ -43,12 +43,16 @@ pipeline {
                     if (env.GIT_BRANCH == 'origin/seccond') {
                         sh'''
                         kubectl apply -f . --namespace=dev
-                        kubectl rollout restart deployment backend --namespace=dev
+                        kubectl rollout restart deployment flaskppd --namespace=dev
+                        kubectl rollout restart deployment flasksqld --namespace=dev
+                        kubectl rollout restart deployment nginxd --namespace=dev
                         '''
                     } else if (env.GIT_BRANCH == 'origin/master') {
                         sh'''
                         kubectl apply -f . --namespace=prod
-                        kubectl rollout restart deployment backend --namespace=prod
+                        kubectl rollout restart deployment flaskppd --namespace=prod
+                        kubectl rollout restart deployment flasksqld --namespace=prod
+                        kubectl rollout restart deployment nginxd --namespace=prod
                         '''
                     } else {
                         sh'''
