@@ -16,7 +16,7 @@ sudo docker push saigiridharr/flasksql:$BUILD_NUMBER
 sudo docker push saigiridharr/flasksql:latest
 sudo docker rmi saigiridharr/myflaskapp:$BUILD_NUMBER
 sudo docker rmi saigiridharr/flasksql:$BUILD_NUMBER
-kubectl apply -f kube-deploy.yaml --namespace dev
+kubectl apply -f *.yaml --namespace dev
 else
-kubectl apply -f kube-deploy.yaml --namespace prod
+kubectl apply -f *.yaml --namespace prod
 fi

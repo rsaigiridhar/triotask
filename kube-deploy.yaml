@@ -19,6 +19,7 @@ spec:
       containers:
       - name: flaskappc
         image: saigiridharr/myflaskapp
+        imagePullPolicy: Always
         ports:
         -  containerPort: 5050
 
@@ -81,6 +82,7 @@ spec:
       containers:
       - name: nginxc
         image: nginx:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -124,6 +126,7 @@ spec:
       containers:
       - name: flasksqlc
         image: saigiridharr/flasksql
+        imagePullPolicy: Always
         ports:
         -  containerPort: 3306
 
