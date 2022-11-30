@@ -6,7 +6,8 @@ pipeline {
                 script {
                     if (env.GIT_BRANCH == 'origin/seccond') {
                     sh '''
-                    cd /home/jenkins/triotask/flask-app
+                    pwd
+                    cd ./flask-app
                     pwd
                     docker build -t gcr.io/lbg-python-cohort-8/rsgflaskapp:latest -t gcr.io/lbg-python-cohort-8/rsgflaskapp:$BUILD_NUMBER .
                     cd /home/jenkins/triotask/db
