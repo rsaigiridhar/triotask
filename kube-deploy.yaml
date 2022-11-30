@@ -19,6 +19,7 @@ spec:
       containers:
       - name: flaskappc
         image: saigiridharr/myflaskapp
+        imagePullPolicy: Always
         ports:
         -  containerPort: 5050
 
@@ -81,6 +82,7 @@ spec:
       containers:
       - name: nginxc
         image: nginx:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 80
         volumeMounts:
@@ -121,11 +123,19 @@ spec:
       labels:
         app: flasksql
     spec:
+      volumes:
+      - name: normal-volume
+        persistentVolumeClaim:
+          claimName: persis-vol-claim
       containers:
       - name: flasksqlc
-        image: saigiridharr/flasksql
+        image: saigiridharr/flasksql1
+        imagePullPolicy: Always
         ports:
         -  containerPort: 3306
+        volumeMounts:
+        - name: normal-volume
+          mountPath: /var/lib/mysql
 
 ---
 
@@ -142,3 +152,4 @@ spec:
   - protocol: TCP
     port: 3306
     targetPort: 3306
+
