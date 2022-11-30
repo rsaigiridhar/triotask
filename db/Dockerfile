@@ -3,7 +3,7 @@
 FROM mysql:5.7
 
 # Add a database and root password
-# For hints on how to do this, consult the mysql 5.7 image documentation
+# For hints on how to do this, consult the mysql 5.7 image documentation in dockerhub
 ENV MYSQL_DATABASE=flask-db
 ENV MYSQL_ROOT_PASSWORD=root123
 
