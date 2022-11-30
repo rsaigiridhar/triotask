@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: flaskappc
-        image: saigiridharr/myflaskapp
+        image: saigiridharr/myflaskapp # change to gcr
         imagePullPolicy: Always
         ports:
         -  containerPort: 5050
@@ -129,7 +129,7 @@ spec:
           claimName: persis-vol-claim
       containers:
       - name: flasksqlc
-        image: saigiridharr/flasksql1
+        image: saigiridharr/flasksql1 # change to gcr
         imagePullPolicy: Always
         ports:
         -  containerPort: 3306
