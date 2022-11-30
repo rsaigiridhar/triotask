@@ -7,13 +7,13 @@ pipeline {
                     if (env.GIT_BRANCH == 'origin/seccond') {
                     sh '''
                     cd /home/jenkins/triotask/flask-app
-                    echo pwd
+                    pwd
                     docker build -t gcr.io/lbg-python-cohort-8/rsgflaskapp:latest -t gcr.io/lbg-python-cohort-8/rsgflaskapp:$BUILD_NUMBER .
                     cd /home/jenkins/triotask/db
-                    echo pwd
+                    pwd
                     docker build -t gcr.io/lbg-python-cohort-8/rsgflasksql:latest -t gcr.io/lbg-python-cohort-8/rsgflasksql:$BUILD_NUMBER .
                     cd /home/jenkins/triotask/db1
-                    echo pwd
+                    pwd
                     docker build -t gcr.io/lbg-python-cohort-8/rsgflasksql1:latest -t gcr.io/lbg-python-cohort-8/rsgflasksql1:$BUILD_NUMBER .
                     '''
                     } else {
