@@ -6,6 +6,8 @@ rm -rf triotask
 git clone git@github.com:rsaigiridhar/triotask.git
 if [ $GIT_BRANCH != "origin/master" ]
 then
+sudo dcoker rmi saigiridharr/myflaskapp:latest
+sudo dcoker rmi saigiridharr/flasksql:latest
 sudo docker build -t saigiridharr/myflaskapp:$BUILD_NUMBER /home/jenkins/triotask/flask-app
 sudo docker build -t saigiridharr/myflaskapp:latest /home/jenkins/triotask/flask-app
 sudo docker build -t saigiridharr/flasksql:$BUILD_NUMBER /home/jenkins/triotask/db
@@ -16,7 +18,7 @@ sudo docker push saigiridharr/flasksql:$BUILD_NUMBER
 sudo docker push saigiridharr/flasksql:latest
 sudo docker rmi saigiridharr/myflaskapp:$BUILD_NUMBER
 sudo docker rmi saigiridharr/flasksql:$BUILD_NUMBER
-kubectl apply -f *.yaml --namespace dev
+kubectl apply -f . --namespace dev
 else
-kubectl apply -f *.yaml --namespace prod
+kubectl apply -f . --namespace prod
 fi
