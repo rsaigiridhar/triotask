@@ -126,7 +126,7 @@ spec:
       volumes:
       - name: normal-volume
         persistentVolumeClaim:
-          claimName: persis-vol-caim
+          claimName: persis-vol-claim
       containers:
       - name: flasksqlc
         image: saigiridharr/flasksql
