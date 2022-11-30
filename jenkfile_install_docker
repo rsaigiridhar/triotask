@@ -7,7 +7,7 @@ sudo apt-get update
 sudo apt install curl -y
 curl https://get.docker.com | sudo bash
 sudo usermod -aG docker $(whoami)
-# make sure jq & curl is installed
+# make sure jq & curl is installed before progressing
 sudo apt update
 sudo apt install -y curl jq
 # set which version to download (latest)
