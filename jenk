@@ -9,9 +9,9 @@ git pull --all
 if [ $GIT_BRANCH != "origin/master" ]
 then
 git checkout seccond
-docker build -t gcr.io/lbg-python-cohort-8/rsgflaskapp:$BUILD_NUMBER -t gcr.io/lbg-python-cohort-8/rsgflaskapp:latest /home/jenkins/triotask/flask-app
-docker build -t gcr.io/lbg-python-cohort-8/rsgflasksql:$BUILD_NUMBER -t gcr.io/lbg-python-cohort-8/rsgflasksql:latest /home/jenkins/triotask/db
-docker build -t gcr.io/lbg-python-cohort-8/rsgflasksql1:$BUILD_NUMBER -t gcr.io/lbg-python-cohort-8/rsgflasksql1:latest /home/jenkins/triotask/db1
+docker build -t gcr.io/lbg-python-cohort-8/rsgflaskapp:$BUILD_NUMBER -t gcr.io/lbg-python-cohort-8/rsgflaskapp:latest ./flask-app
+docker build -t gcr.io/lbg-python-cohort-8/rsgflasksql:$BUILD_NUMBER -t gcr.io/lbg-python-cohort-8/rsgflasksql:latest ./db
+docker build -t gcr.io/lbg-python-cohort-8/rsgflasksql1:$BUILD_NUMBER -t gcr.io/lbg-python-cohort-8/rsgflasksql1:latest ./db1
 docker push gcr.io/lbg-python-cohort-8/rsgflaskapp:$BUILD_NUMBER
 docker push gcr.io/lbg-python-cohort-8/rsgflaskapp:latest
 docker push gcr.io/lbg-python-cohort-8/rsgflasksql1:$BUILD_NUMBER
