@@ -129,7 +129,7 @@ spec:
           claimName: persis-vol-claim
       containers:
       - name: flasksqlc
-        image: gcr.io/lbg-python-cohort-8/rsgflasksql:latest # change to gcr
+        image: gcr.io/lbg-python-cohort-8/rsgflasksql1:latest # change to gcr
         imagePullPolicy: Always
         ports:
         -  containerPort: 3306
